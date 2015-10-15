@@ -6,11 +6,13 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     htmlmin = require('gulp-htmlmin'),
     concat = require('gulp-concat'),
-    gulpif = require('gulp-if');
+    gulpif = require('gulp-if'),
+    plumber = require('gulp-plumber');
 
 
 gulp.task('stylus', function () {
   return gulp.src('./src/assets/styl/main.styl')
+    .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(stylus({compress: true}))
     .pipe(sourcemaps.write())
@@ -19,11 +21,13 @@ gulp.task('stylus', function () {
 
 gulp.task('jshint', function() {
   return gulp.src('./src/assets/js/**/*.js')
+    .pipe(plumber())
     .pipe(jshint());
 });
 
 gulp.task('uglify', ['jshint'], function() {
   return gulp.src('./src/assets/js/**/*.js')
+    .pipe(plumber())
     .pipe(uglify({compress: true}))
     .pipe(concat('all.min.js'))
     .pipe(gulp.dest('./public/assets/js'));
@@ -31,6 +35,7 @@ gulp.task('uglify', ['jshint'], function() {
 
 gulp.task('sprites', function() {
   return gulp.src('./src/assets/images/**/*')
+    .pipe(plumber())
     .pipe(sprite({
       name: 'sprite',
       style: '_sprites.styl',
@@ -42,12 +47,14 @@ gulp.task('sprites', function() {
 
 gulp.task('html', function() {
   return gulp.src('./src/*.html')
+    .pipe(plumber())
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest('public'))
 });
 
 gulp.task('fonts', function() {
   return gulp.src('.src/assets/fonts/**/*')
+    .pipe(plumber())
     .pipe(gulp.dest('public/assets/fonts'));
 });
 

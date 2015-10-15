@@ -20,5 +20,8 @@
     "gulp-uglify": "^1.4.0",
     "jshint": "^2.8.0",
     "stylus": "^0.52.4"
+  },
+  "dependencies": {
+    "gulp-plumber": "^1.0.1"
   }
 }
