@@ -58,3 +58,5 @@ gulp.task('watch', function() {
   gulp.watch(['./src/assets/fonts/**/*'], ['fonts']);
   gulp.watch(['./src/*.html'], ['html']);
 });
+
+gulp.task('default', ['stylus', 'uglify', 'html', 'fonts', 'watch', 'sprites']);
