@@ -9,7 +9,6 @@
   "author": "Rafael Fragoso",
   "license": "MIT",
   "devDependencies": {
-    "css-sprite": "^0.9.9",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
     "gulp-htmlmin": "^1.1.4",
@@ -19,6 +18,7 @@
     "gulp-stylus": "^2.0.6",
     "gulp-uglify": "^1.4.0",
     "jshint": "^2.8.0",
+    "sprity": "^1.0.7",
     "stylus": "^0.52.4"
   },
   "dependencies": {
