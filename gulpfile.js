@@ -2,7 +2,7 @@ var gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     stylus = require('gulp-stylus'),
     jshint = require('gulp-jshint'),
-    sprite = require('css-sprite').stream,
+    sprity = require('sprity'),
     uglify = require('gulp-uglify'),
     htmlmin = require('gulp-htmlmin'),
     concat = require('gulp-concat'),
@@ -10,7 +10,7 @@ var gulp = require('gulp'),
     plumber = require('gulp-plumber');
 
 
-gulp.task('stylus', function () {
+gulp.task('stylus', ['sprites'], function () {
   return gulp.src('./src/assets/styl/main.styl')
     .pipe(plumber())
     .pipe(sourcemaps.init())
@@ -34,15 +34,12 @@ gulp.task('uglify', ['jshint'], function() {
 });
 
 gulp.task('sprites', function() {
-  return gulp.src('./src/assets/images/**/*')
-    .pipe(plumber())
-    .pipe(sprite({
-      name: 'sprite',
-      style: '_sprites.styl',
-      cssPath: './assets/images/',
-      preprocessor: 'stylus'
-    }))
-    .pipe(gulpif('*.png', gulp.dest('./public/assets/images/'), gulp.dest('./src/assets/styl/includes')));
+  return sprity.src({
+    src: './src/assets/images/**/*',
+    style: '_sprites.styl',
+    cssPath: './assets/images/',
+  })
+  .pipe(gulpif('*.png', gulp.dest('./public/assets/images/'), gulp.dest('./src/assets/styl/includes')));
 });
 
 gulp.task('html', function() {
