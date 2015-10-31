@@ -1,10 +1,14 @@
 {
   "name": "gulp-stylus-bootstrap",
   "version": "1.0.0",
-  "description": "",
+  "description": "A quickstart project using Gulp and Stylus",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rafaelfragosom/gulp-stylus-bootstrap.git"
   },
   "author": "Rafael Fragoso",
   "license": "MIT",
